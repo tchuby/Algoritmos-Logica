@@ -35,8 +35,22 @@ public class Services{
         ou negativo (considere 0 positivo). 
         Aqui fiz diferente do enunciado, considerando 0
         neutro.*/
+        String input;
+        double chosenNumber;
+
         print("Saiba se um número é positivo ou" +
-        " negativo: ");
+        " negativo.");
+        print(("Digite um número: "));
+        input = _reader.next();
+
+        chosenNumber = validateDouble(input);
+
+        if(chosenNumber < 10)
+            print(chosenNumber + " é negativo.");
+        else if(chosenNumber > 10)
+            print(chosenNumber + " é positivo.");
+        else
+            print(chosenNumber + "é neutro.");
     }
 
     private void calculateApplePrice(){
@@ -45,17 +59,46 @@ public class Services{
         compradas pelo menos 12. Escreva um programa que
         leia o número de maçãs compradas, calcule e es-
         creva o custo total da compra.*/
+        double numberOfApples, totalPrice;
+
         print("Saiba quanto pagar pelas maçãs: ");
+        print("Quantas maçãs foram compradas? ");
+        numberOfApples = validateDouble(_reader.next());
+
+        if(numberOfApples < 12){
+            totalPrice = numberOfApples * 1.3;
+        }
+        else{
+            totalPrice = numberOfApples;
+        }
+        print("O valor devido pelas maçãs é de: R$" +
+                formatDouble(totalPrice));
     }
 
     private void calculateSellerPaycheck(){
         /*Item 04 - Ler o salário fixo e o valor das vendas
         efetuadas pelo vendedor de uma empresa. Sabendo-se
-        que ele recebe uma comiddão de 3% sobre o total das
+        que ele recebe uma comissão de 3% sobre o total das
         vendas até R$1.500,00 mais 5%  sobre o que ultra-
         passar este valor, calcular e escrever o seu salário
         total.*/
-        print("Calcule o pagamento do vendedor: ");
+        double baseSalary, salesAmount, sellerPaycheck;
+
+        print("Calcule o pagamento do vendedor.");
+        print("Digite o salário base do vendedor: ");
+            baseSalary = validateDouble(_reader.next());
+
+        print("Digite o valor total de suas das vendas: ");
+            salesAmount = validateDouble(_reader.next());
+
+        if(salesAmount > 1500) {
+            sellerPaycheck = baseSalary + (salesAmount * 0.03) +
+                    ((salesAmount - 1500) * 0.05);
+        }
+        else{
+            sellerPaycheck = baseSalary + (salesAmount * 0.03);
+        }
+        print("O salário do vendedor será de: " + sellerPaycheck);
     }
 
     private void isApproved(){
@@ -65,7 +108,20 @@ public class Services{
          (considerar que a nota igual ou maior que 6 o aluno
          é aprovado). Escrever também a média calculada.
          */
-        print("Saiba se o aluno foi aprovado: "); 
+        double firstGrade, secondGrade, average;
+        print("Saiba se o aluno foi aprovado: ");
+        print("Informe a nota da primeira avaliação: ");
+        firstGrade = validateDouble(_reader.next());
+
+        print("Informe a nota da segunda avaliação: ");
+        secondGrade = validateDouble(_reader.next());
+
+        average = (firstGrade + secondGrade) / 2;
+        if (average < 6.0)
+            print("O aluno foi reprovado, sua média foi de: " +
+                    average + ".");
+        else print("O aluno foi aprovado, sua média foi de: " +
+                    average + ".");
     }
 
     private void canVote(){
