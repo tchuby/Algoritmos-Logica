@@ -98,7 +98,8 @@ public class Services{
         else{
             sellerPaycheck = baseSalary + (salesAmount * 0.03);
         }
-        print("O salário do vendedor será de: " + sellerPaycheck);
+        print("O salário do vendedor será de: " + formatDouble(
+                sellerPaycheck));
     }
 
     private void isApproved(){
@@ -119,9 +120,9 @@ public class Services{
         average = (firstGrade + secondGrade) / 2;
         if (average < 6.0)
             print("O aluno foi reprovado, sua média foi de: " +
-                    average + ".");
+                    formatDouble(average) + ".");
         else print("O aluno foi aprovado, sua média foi de: " +
-                    average + ".");
+                    formatDouble(average) + ".");
     }
 
     private void canVote(){
