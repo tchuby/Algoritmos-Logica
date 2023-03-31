@@ -137,12 +137,24 @@ public class Services{
     private void evaluateGreater(){
         /*Item 07 - Ler dois valores e escrever o maior
         deles.*/
+        double firstNumber, secondNumber;
+
         print("Insira dois números e saiba qual o"+
         " maior entre eles.");
         print("Digite o primeiro número: ");
-        print("Digite o segundo número: ");
+        firstNumber = validateDouble(_reader.next());
 
-        print(" é maior que ");
+        print("Digite o segundo número: ");
+        secondNumber = validateDouble((_reader.next()));
+
+        if(firstNumber.equals(secondNumber))
+            print("Os números são iguais.");
+        else if (firstNumber > secondNumber)
+            print(firstNumber + " é maior que "
+                    + secondNumber + "!");
+        else
+            print(secondNumber + " é maior que "
+                    + firstNumber + "!");
     }
 
     private void orderAscendingNumbers(){
@@ -150,6 +162,8 @@ public class Services{
          ordem crescente.
          */
         print("Ordene os números: ");
+        print("Escreva os números que deseja ordenar " +
+                "separando-os por somente por espaços.");
     }
 
     private void calculatePayment(){
