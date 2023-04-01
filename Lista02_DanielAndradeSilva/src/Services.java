@@ -92,7 +92,7 @@ public class Services{
             salesAmount = validateDouble(_reader.next());
 
         if(salesAmount > 1500) {
-            sellerPaycheck = baseSalary + (salesAmount * 0.03) +
+            sellerPaycheck = baseSalary + (1500 * 0.03) +
                     ((salesAmount - 1500) * 0.05);
         }
         else{
