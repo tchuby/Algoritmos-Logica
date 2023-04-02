@@ -1,5 +1,8 @@
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class Services{
@@ -131,7 +134,23 @@ public class Services{
         ou não este ano (não é necessário considerar o mês 
         em que a pessoa nasceu).
          */
-        print("Saiba se pode votar: ");
+       
+        LocalDate localDate, birthDate;
+
+        localDate = LocalDate.now();
+
+        print("Saiba se o cidadão pode votar: ");
+        print("Digite a data de nascimento do cidadão no formato " +
+        "dd/mm/aaaa: ");
+        birthDate = readDate();
+        
+        var limitDate = localDate.plusYears(-16);
+
+        if(limitDate.isAfter(birthDate))
+            print("O cidadão pode votar");
+        else
+            print("O cidadão não pode votar");
+
     }
 
     private void evaluateGreater(){
@@ -147,7 +166,7 @@ public class Services{
         print("Digite o segundo número: ");
         secondNumber = validateDouble((_reader.next()));
 
-        if(firstNumber.equals(secondNumber))
+        if(firstNumber == secondNumber)
             print("Os números são iguais.");
         else if (firstNumber > secondNumber)
             print(firstNumber + " é maior que "
@@ -161,9 +180,19 @@ public class Services{
         /*Item 08 - Ler dois valores e escrevê-los em 
          ordem crescente.
          */
-        print("Ordene os números: ");
-        print("Escreva os números que deseja ordenar " +
-                "separando-os por somente por espaços.");
+        double firstNumber, secondNumber;
+        print("Ordene dois números:");
+        print("Digite o primeiro número: ");
+            firstNumber = validateDouble(_reader.next());
+        print("Digite o segundo número: ");
+            secondNumber = validateDouble(_reader.next());
+
+        if(firstNumber < secondNumber)
+            print("Os números em ordem crescente: ("
+             + firstNumber + ", "+ secondNumber + ")");
+        else
+            print("Os números em ordem crescente: ("
+            + secondNumber + ", "+ firstNumber + ")");
     }
 
     private void calculatePayment(){
@@ -178,8 +207,26 @@ public class Services{
          caso tenham sido trabalhadas (considere que o 
          mês possua 4 semanas exatas).
          */
+        double paymentPerHour, totalPayment, workedHours;
         print("Calcule o salário total do" + 
         "funcionario:");
+
+        print("Digite o números de horas trabalhadas" + 
+                " no mês: ");
+            workedHours = validateDouble(_reader.next());
+
+        print("Digite o salário por hora do " +
+                "funcionário: ");
+            paymentPerHour = validateDouble(_reader.next());
+
+        if(workedHours <= 160)
+            totalPayment = workedHours * paymentPerHour;
+        else
+            totalPayment = (paymentPerHour * 160) + 
+                            ((workedHours - 160) * paymentPerHour * 0.5);
+
+        print("O salário total do funcionário " +
+                "é de: " + formatDouble(totalPayment) + ".");
     }
     
     private void fixAlgorithm(){
@@ -204,7 +251,42 @@ public class Services{
                 escrever peso_ideal
             fim
         */
+        double idealWeigth = 0.00;
+
+        print("O ALGORÍTMO DO ENUNCIADO ESTÁ ERRADO POIS NÃO É "+
+                "FEITA A LEITURA DA VARIÁVEL 'ALTURA'.");
+        print("Segue sua correção");
         print("Calcule o seu peso ideal: ");
+
+        print("Digite o seu nome: ");
+        var name = _reader.next();
+
+        print("Digite sua altura em metros: ");
+        var height = validateDouble(_reader.next());
+
+        print("Qual o seu sexo (F/M): ");
+        var sex = _reader.next();
+
+        boolean controlFlow = true;
+
+        while(controlFlow){
+            if("F".equals(sex.toUpperCase())){
+                idealWeigth = (62.1 * height) - 44.7;
+                controlFlow = false;
+            }
+            else if("M".equals(sex.toUpperCase())){
+                idealWeigth = (72.7 * height) - 58.0;
+                controlFlow = false;
+            }
+            else{
+                print("Utilize M (masculino) ou F (feminino).");
+                print("Qual o seu sexo (F/M): ");
+                    sex = _reader.next();
+            } 
+        }
+
+        print(name + ", o seu peso ideal seria: " + 
+            formatDouble(idealWeigth) + "kg.");
     }
 
     public void showPanel(){
@@ -212,7 +294,7 @@ public class Services{
         int chosenItem = 0;
 
         while(controlFlow){
-            print("Iniciando exercícios da lista 02...");
+            print("Exercícios da lista 02...");
             print("Qual item da lista deseja utilizar?");
             print("1 - Maior ou menor que dez;");
             print("2 - Positivo ou negativo;");
@@ -225,7 +307,6 @@ public class Services{
             print("9 - Calcular pagamento;");
             print("10 - Peso ideal.");
             print("Digite um número inteiro entre 1 e 10:");
-            print("");
             
             String itemInput = _reader.next();
             
@@ -308,7 +389,8 @@ public class Services{
         try{
             //Limpa a tela no windows, no linux e no MacOS
             if (System.getProperty("os.name").contains("Windows"))
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                new ProcessBuilder("cmd", "/c", "cls")
+                        .inheritIO().start().waitFor();
             else
                 Runtime.getRuntime().exec("clear");
         }
@@ -357,7 +439,28 @@ public class Services{
     }
 
     public String formatDouble(Double number){
-        String numberFormated = new DecimalFormat("#,##0.00").format(number).toString();
+        String numberFormated = new DecimalFormat("#,##0.00")
+                                        .format(number).toString();
         return numberFormated;
+    }
+
+    public LocalDate readDate(){
+        LocalDate dateParsed = LocalDate.now();
+        DateTimeFormatter datePattern = DateTimeFormatter
+                                            .ofPattern("dd/MM/yyyy");
+        boolean controlFlow= true;
+
+        while(controlFlow){
+            try{
+                dateParsed = LocalDate.parse(_reader.next(), datePattern);
+                controlFlow = false;
+            }
+            catch(DateTimeParseException e){
+                print("Data inválida, escreva a data seguindo o " +
+                    "exemplo: 01/01/1900");
+            }
+        }
+
+        return dateParsed;
     }
 }
