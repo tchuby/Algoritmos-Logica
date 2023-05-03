@@ -11,26 +11,42 @@ public class Service {
     private void print(String output){
         System.out.println(output);
     }
-    public void arrengeIncreasing(){
+    public void writeFromOneToTem(){
         /*
          * Escreva um algoritmo para imprimir os números
          * de 1(inclusive) a 10(inclusive) em ordem
          * crescente.
          */
+        print("Exercício 01");
+        for(int i = 0; i < 10; i++){
+            print("Número "+ i + ";");
+        }
+        print("Número 10.");
     }
-    public void arrengeDecreasing(){
+    public void writeFromTemToOne(){
         /*
          * Escreva um algoritmo para imprimir os números
          * de 1 a 10 (inclusives) em ordem decrescente.
          */
+        print("Exercício 02");
+        for(int i = 10; i > 1; i--){
+            print("Número "+ i + ";");
+        }
+        print("Número 1.");
     }
+
     public void printNumbersGreaterThen(){
         /*
          * Escreva um algoritmo para imprimir os 10 
          * primeiros números inteiros maiores que 100.
          */
+        print("Exercício 03");
+        for(int i = 100; i < 110; i++){
+            print("Número "+ i + ";");
+        }
+        print("Número 110.");
     }
-    public void printNaturalNumbersUntil(){
+    public void printNaturalNumbersUntilN(){
         /*
          * Ler um valor N e imprimir todos os valores
          * inteiros entre 1 e N (inclusives). Considere
@@ -40,18 +56,65 @@ public class Service {
          * o valor informado (para N) não seja maior que
          * 0, deverá ser lido um novo valor para N.
          */
+        print("Imprimir números inteiros até N.");
+        print("Digite um número inteiro: ");
+        int number = validateInteger(_reader.next());
+        for(int i = 1; i < number; i++){
+            print("Número " + i + ";");
+        }
+        print("Número " + number + ".");
+    }
+    public void printNaturalNumbersUntilNGreaterThenZero(){
+        /*
+         *Modifique o exercício anterior para aceitar somente
+         * valores maiores que 0 para N. Caso o valor informado
+         * não seja maior que 0, deverá ser lido um novo valor
+         * para N.
+         */
+        print("Imprimir números inteiros até N.");
+
+        print("Digite um número inteiro: ");
+        int number = validateInteger(_reader.next());
+        while(number <= 0)
+        {
+            print("N deve ser maior que 0.");
+            number = validateInteger(_reader.next());
+        }
+
+        for(int i = 1; i < number; i++){
+            print("Número " + i + ";");
+        }
+        print("Número " + number + ".");
     }
     public void eightTimesTable(){
         /*
          * Escreva um algoritmo que calcule e imprima
          * a tabuada de 8.
          */
+        print("Tabuada de oito: ");
+        for(int i = 1; i < 10; i++){
+            var result = 8 * 1;
+            print("8 x " + i + " = " + result + ";");
+        }
+        print("8 x 10 = 80.");
     }
     public void timesTableOf(){
         /*
          * Ler um valor inteiro e escrever a tabuada
          * deste número. (n * 1 a 10)
          */
+        int result;
+        print("Tabuada de N.");
+        print("Digite um número inteiro entre 1 e 10"
+                + " para saber sua tabuada: ");
+        var n = validateInteger(_reader.next());
+        print("Tabuada de " + n + " :");
+        for(int i = 1; i < 10; i++){
+            result = n * i;
+            print(n + " x " + i + "= " + result + ";");
+        }
+        result = n * 10;
+        print(n + " x 10 = " + result + ".");
     }
     public void writeNegativeNumbers(){
         /*
@@ -79,7 +142,8 @@ public class Service {
 
         while(controlFlow){
             print("Exercícios da lista 03...");
-
+            print("Escolha um número de 1 a 9 para o "
+                    +"respectivo exercício.");
 
             String itemInput = _reader.next();
 
@@ -90,37 +154,37 @@ public class Service {
             switch(chosenItem){
                 case 1:
                     print("Item 1:");
-
+                    writeFromOneToTem();
                     break;
 
                 case 2:
                     print("Item2:");
-
+                    writeFromTemToOne();
                     break;
 
                 case 3:
                     print("Item 3:");
-
+                    printNumbersGreaterThen();
                     break;
 
                 case 4:
                     print("Item 4:");
-
+                    printNaturalNumbersUntilN();
                     break;
 
                 case 5:
                     print("Item 5:");
-
+                    printNaturalNumbersUntilNGreaterThenZero();
                     break;
 
                 case 6:
                     print("Item 6:");
-
+                    eightTimesTable();
                     break;
 
                 case 7:
                     print("Item 7:");
-
+                    timesTableOf();
                     break;
 
                 case 8:
