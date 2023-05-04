@@ -121,6 +121,7 @@ public class Service {
          * Ler 10 valores e escrever quantos desses
          * valores são negativos.
          */
+        int negatives =0;
         int[] numbers = new int[10];
         String out = "";
         print("Escreva 10 valores e saiba quais são negativos.");
@@ -130,10 +131,11 @@ public class Service {
         }
         for(int n : numbers){
             if(n < 0){
-              out = out+ ", " + n;
+              out = out+ " " + n;
+              negatives++;
             }
         }
-        print("Os números negativos são: {" + out + "}");
+        print("Os " + negatives + " números negativos são: {" + out + " }");
     }
     public void writeNumbersBetween(){
         /*
@@ -142,12 +144,22 @@ public class Service {
          * inclusive o 10 e o 20, e quantos estão 
          * fora do intervalo.
          */
+
     }
     public void average(){
         /*
          * Ler 10 valores e calcular a média aritimética
          * entre eles.
          */
+        int i = 1;
+        double total = 0.0;
+        print("Digite 10 números e saiba a média entre eles: ");
+        while( i <= 10){
+            print("Digite o " + i + "º número: ");
+            total = total + validateDouble(_reader.next());
+        }
+        double average = total/10;
+        print("A média arimtimética entre os números é : " + average);
     }
     public void showPanel(){
         boolean controlFlow = true;
