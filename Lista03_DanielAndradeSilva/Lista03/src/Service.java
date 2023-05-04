@@ -121,6 +121,19 @@ public class Service {
          * Ler 10 valores e escrever quantos desses
          * valores são negativos.
          */
+        int[] numbers = new int[10];
+        String out = "";
+        print("Escreva 10 valores e saiba quais são negativos.");
+        for(int i = 0; i < 10; i++){
+            print("Digite um número inteiro: ");
+            numbers[i] = validateInteger(_reader.next());
+        }
+        for(int n : numbers){
+            if(n < 0){
+              out = out+ ", " + n;
+            }
+        }
+        print("Os números negativos são: {" + out + "}");
     }
     public void writeNumbersBetween(){
         /*
@@ -189,7 +202,7 @@ public class Service {
 
                 case 8:
                     print("Item 8:");
-
+                    writeNegativeNumbers();
                     break;
 
                 case 9:
