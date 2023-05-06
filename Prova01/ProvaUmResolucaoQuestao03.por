@@ -1,7 +1,7 @@
 programa
 {
 	inclua biblioteca Matematica --> m
-	inclua biblioteca Util --> u
+	inclua biblioteca Util --> u
 	
 	funcao inicio()
 	{
@@ -10,7 +10,7 @@ programa
 		logico controle = verdadeiro
 
 		escreva("Saiba o valor gasto para encher o tanque.")
-		u.aguarde(1000)
+		u.aguarde(2000)
 		limpa()
 
 		enquanto(controle)
@@ -19,10 +19,14 @@ programa
 			escreva("G para gasolina ou A para álcool. \n")
 			leia(TC)
 			limpa()
-			se(TC != "A" e TC != "G"){
+			se(TC != "A" e TC != "G")
+			{
 				escreva("Tipo de carro inválido. \n")
+				u.aguarde(2000)
+				limpa()
 			}
-			senao{
+			senao
+			{
 				controle = falso
 			}
 		}
@@ -48,7 +52,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 559; 
+ * @POSICAO-CURSOR = 496; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
