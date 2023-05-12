@@ -56,6 +56,7 @@ public class Service {
          * o valor informado (para N) não seja maior que
          * 0, deverá ser lido um novo valor para N.
          */
+        print("Exercício 04");
         print("Imprimir números inteiros até N.");
         print("Digite um número inteiro: ");
         int number = validateInteger(_reader.next());
@@ -71,6 +72,7 @@ public class Service {
          * não seja maior que 0, deverá ser lido um novo valor
          * para N.
          */
+        print("Exercício 05");
         print("Imprimir números inteiros até N.");
 
         print("Digite um número inteiro: ");
@@ -91,6 +93,7 @@ public class Service {
          * Escreva um algoritmo que calcule e imprima
          * a tabuada de 8.
          */
+        print("Exercício 06");
         print("Tabuada de oito: ");
         for(int i = 1; i < 10; i++){
             var result = 8 * 1;
@@ -103,6 +106,7 @@ public class Service {
          * Ler um valor inteiro e escrever a tabuada
          * deste número. (n * 1 a 10)
          */
+        print("Exercício 07");
         int result;
         print("Tabuada de N.");
         print("Digite um número inteiro entre 1 e 10"
@@ -121,6 +125,7 @@ public class Service {
          * Ler 10 valores e escrever quantos desses
          * valores são negativos.
          */
+        print("Exercício 08");
         int negatives =0;
         int[] numbers = new int[10];
         String out = "";
@@ -144,7 +149,23 @@ public class Service {
          * inclusive o 10 e o 20, e quantos estão 
          * fora do intervalo.
          */
+        print("Exercício 09");
 
+        int[] numbers = new int[10];
+        int numbersBetween =0;
+        String out = "";
+        print("Escreva 10 valores e saiba quais são negativos.");
+        for(int i = 0; i < 10; i++){
+            print("Digite um número inteiro: ");
+            numbers[i] = validateInteger(_reader.next());
+        }
+        for(int n : numbers){
+            if(n > 9 && n <21){
+                out = out+ " " + n;
+                numbersBetween++;
+            }
+        }
+        print("Os " + numbersBetween + " números entre 10 e 20 são: {" + out + " }");
     }
     public void average(){
         /*
@@ -167,7 +188,7 @@ public class Service {
 
         while(controlFlow){
             print("Exercícios da lista 03...");
-            print("Escolha um número de 1 a 9 para o "
+            print("Escolha um número de 1 a 10 para o "
                     +"respectivo exercício.");
 
             String itemInput = _reader.next();
@@ -219,12 +240,12 @@ public class Service {
 
                 case 9:
                     print("Item 9:");
-
+                    writeNumbersBetween();
                     break;
 
                 case 10:
                     print("Item 10:");
-
+                    average();
                     break;
 
                 default:
