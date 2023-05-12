@@ -154,7 +154,7 @@ public class Service {
         int[] numbers = new int[10];
         int numbersBetween =0;
         String out = "";
-        print("Escreva 10 valores e saiba quais são negativos.");
+        print("Escreva 10 valores e saiba quais estão entre 10 e 20.");
         for(int i = 0; i < 10; i++){
             print("Digite um número inteiro: ");
             numbers[i] = validateInteger(_reader.next());
@@ -188,6 +188,16 @@ public class Service {
 
         while(controlFlow){
             print("Exercícios da lista 03...");
+            print("1- Escreva de 1 a 10;");
+            print("2- Escreva de 10 a 1;");
+            print("3- Maiores que;");
+            print("4- Naturais até N;");
+            print("5- Naturais até N sem o 0;");
+            print("6- Tabuada de 8;");
+            print("7- Tabuada de N;");
+            print("8- Mostre os negativos;");
+            print("9- Números entre 10 e 20;");
+            print("10- Média.");
             print("Escolha um número de 1 a 10 para o "
                     +"respectivo exercício.");
 
