@@ -2,11 +2,15 @@ package Services;
 
 import Util.ExtensionMethods;
 
+import java.util.List;
+
 public class Service{
     
     private ExtensionMethods _methods;
 
-    public Service(){}
+    public Service(){
+        this._methods = new ExtensionMethods();
+    }
     
     public void exerciseOne(){
         /*
@@ -14,7 +18,20 @@ public class Service{
          * um de cada vez, e conta quantos desses valores
          * são negativos, escrevendo essa informação.
          */
+        double input;
+        int negatives = 0;
+
         _methods.print("Exercício nº 1.");
+        _methods.print("Digite 5 números inteiros "
+                +"e saiba quais são negativos: ");
+        for(int i = 1; i < 6; i++){
+            _methods.print("Digite o " + i
+                        + "º número: ");
+            input = _methods.validateDouble(_methods._reader.next());
+            if(input < 0)
+                negatives++;
+        }
+        _methods.print("Foram digitados " + negatives + " números negativos.");
     }
 
     public void exerciseTwo(){
@@ -46,6 +63,16 @@ public class Service{
          *que Chico.
          */
         _methods.print("Exercício nº4.");
+        double alturaChico = 1.5, alturaZe = 1.1, taxaChico = 0.02, taxaZe = 0.03;
+        int anos = 0;
+
+        while(alturaZe <= alturaChico){
+            alturaZe = alturaZe + taxaZe;
+            alturaChico = alturaChico + taxaChico;
+            anos++;
+        }
+        _methods.print("O Zé levará " + anos
+                + " anos para ultrapassar a altura de Chico.");
     }
 
     public void exerciseFive(){
@@ -55,7 +82,25 @@ public class Service{
          *externamente. O final da leitura acontecerá quando for
          *lido um valor negativo.
          */
+        int input = 1, mount = 0, iterator = 0;
+
         _methods.print("Exercício nº5.");
+        _methods.print("Digite números positivos e saiba a média:");
+        while(input > 0){
+
+            input = _methods.validateInteger(_methods._reader.next());
+
+            if(input > 0)
+            {
+                mount = mount + input;
+
+                iterator++;
+            }
+        }
+        double average = mount / iterator;
+
+        _methods.print("A média dos valores é: "
+                    + _methods.formatDouble(average));
     }
 
     public void exerciseSix(){
@@ -74,7 +119,74 @@ public class Service{
          *   - total de votos em branco;
          * Como finalizador do conjunto de votos, tem-se o valor 0.
          */
+        int input;
+        boolean control = true;
+        int votosCandidatoUm = 0, votosCandidatoDois = 0,
+            votosCandidatosTres = 0, votosCandidatosQuatro = 0,
+            votosNulos = 0, votosBrancos = 0;
+
         _methods.print("Exercício nº6.");
+        while(control){
+            _methods.print("Entre com o código do candidato"
+                    + " que receberá o voto: ");
+            input = _methods.validateInteger(
+                    _methods._reader.next());
+
+            switch (input)
+            {
+                case 0:
+                    control = false;
+                    break;
+
+                case 1:
+                    votosCandidatoUm++;
+                    break;
+
+                case 2:
+                    votosCandidatoDois++;
+                    break;
+
+                case 3:
+                    votosCandidatosTres++;
+                    break;
+
+                case 4:
+                    votosCandidatosQuatro++;
+                    break;
+
+                case 5:
+                    votosNulos++;
+                    break;
+
+                case 6:
+                    votosBrancos++;
+                    break;
+
+                default:
+                    _methods.print("Entrar apenas números inteiros "
+                            +"entre 1 e 6;\n"
+                    + "Para sair entre com 0.");
+            }
+        }
+        _methods.print("A eleição teve o seguinte resultado: ");
+
+        _methods.print("O candidato #1 recebeu "
+                + votosCandidatoUm + " votos;");
+
+        _methods.print("O candidato #2 recebeu "
+                + votosCandidatoDois + " votos;");
+
+        _methods.print("O candidato #3 recebeu "
+                + votosCandidatosTres + " votos;");
+
+        _methods.print("O candidato #4 recebeu "
+                + votosCandidatosQuatro + " votos;");
+
+        _methods.print("Tiveram "
+                + votosNulos + " votos nulos;");
+
+        _methods.print("Tiveram "
+                + votosBrancos + " votos em branco;");
     }
 
     public void exerciseSeven(){
@@ -84,7 +196,13 @@ public class Service{
          *deverá ler, além das notas, o código do aluno e 
          *deverá ser encerrado quando o código for igual a zero.
          */
-        _methods.print("Exercício nº7.");
+
+         var students = new List<Student>() {
+         };
+
+         var studentTwo = new Student();
+         var Studant
+         _methods.print("Exercício nº7.");
     }
 
     public void exerciseEight(){
@@ -93,34 +211,55 @@ public class Service{
          *digitados pelo usuário, se eles forem pares. Termine
          *a leitura se o usuário digitar zero (0).
          */
+
         _methods.print("Exercício nº8.");
     }
 
-    public void showGrater(){
+    public void exerciseNine(){
         _methods.print("Exercício nº9.");
     }
 
-    public void exerciseNine(){
-
-    }
-
     public void exerciseTen(){
-
+        _methods.print("Exercício nº10.");
     }
 
     public void exerciseEleven(){
-
+        _methods.print("Exercício nº11.");
     }
 
     public void exerciseTwelve(){
-
+        _methods.print("Exercício nº12.");
     }
 
     public void exerciseThirteen(){
-
+        _methods.print("Exercício nº13.");
     }
 
     public void exerciseFourteen(){
+        _methods.print("Exercício nº14.");
+    }
 
+    class Student{
+        private String name;
+        public int code;
+
+        public Student(){
+
+        }
+        public String getName(){
+            return name;
+        }
+
+        public int getCode(){
+            return code;
+        }
+
+        public void setName(String name){
+            this.name = name;
+        }
+
+        public void setCode(int code){
+            this.code = code;
+        }
     }
 }
