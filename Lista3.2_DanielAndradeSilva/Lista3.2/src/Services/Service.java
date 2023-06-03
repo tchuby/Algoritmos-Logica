@@ -196,12 +196,10 @@ public class Service{
          *deverá ler, além das notas, o código do aluno e 
          *deverá ser encerrado quando o código for igual a zero.
          */
+        
 
-         var students = new List<Student>() {
-         };
 
-         var studentTwo = new Student();
-         var Studant
+
          _methods.print("Exercício nº7.");
     }
 
@@ -237,29 +235,5 @@ public class Service{
 
     public void exerciseFourteen(){
         _methods.print("Exercício nº14.");
-    }
-
-    class Student{
-        private String name;
-        public int code;
-
-        public Student(){
-
-        }
-        public String getName(){
-            return name;
-        }
-
-        public int getCode(){
-            return code;
-        }
-
-        public void setName(String name){
-            this.name = name;
-        }
-
-        public void setCode(int code){
-            this.code = code;
-        }
     }
 }
