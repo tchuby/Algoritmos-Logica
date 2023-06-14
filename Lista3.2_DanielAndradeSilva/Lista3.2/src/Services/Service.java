@@ -51,7 +51,38 @@ public class Service{
          * O final da leitura de dados se dará com a entrada
          *de um salário negativo. (Use o comando ENQUANTO-FAÇA)
          */
+        boolean control = true;
+        int citizens = 0, children = 0, poorPeople = 0;
+        double amountPaycheck = 0.0,
+                averageSalary = 0.0,
+                averageChildren = 0.0,
+                topPaycheck = Double.MIN_VALUE,
+                percentualPoor = 0.0;
+
         _methods.print("Exercício nº3.");
+
+        while(control){
+            _methods.print("Digite o salário do cidadão:");
+            double salary = _methods.validateDouble(_methods._reader.next());
+            if(salary < 0){
+                control = false;
+                continue;
+            }
+            if(salary < 100.00){
+                poorPeople++;
+            }
+            citizens++;
+
+            amountPaycheck = amountPaycheck + salary;
+
+            _methods.print("Digite o número de filhos do cidadão: ");
+            children = children + _methods.validateInteger(_methods._reader.next());
+        }
+
+        _methods.print("A média salarial é de: " +  averageSalary + ".\n"
+            + "A média de número de filhos é de: " + averageChildren + ".\n"
+            + "O maior salário é de: R$ " + topPaycheck + ".\n"
+            + "O percentual de pessoas com salário até R$ 100,00 é de " +  percentualPoor + "%");
     }
 
     public void exerciseFour(){
