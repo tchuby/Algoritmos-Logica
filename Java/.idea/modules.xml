@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Algoritmos-Logica.iml" filepath="$PROJECT_DIR$/Algoritmos-Logica.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Eclipse/Aula_16-05/Aula_16-05.iml" filepath="$PROJECT_DIR$/Eclipse/Aula_16-05/Aula_16-05.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Eclipse/Hello_Eclipse/Hello_Eclipse.iml" filepath="$PROJECT_DIR$/Eclipse/Hello_Eclipse/Hello_Eclipse.iml" />
+    </modules>
+  </component>
+</project>
