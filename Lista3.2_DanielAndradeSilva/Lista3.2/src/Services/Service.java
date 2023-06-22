@@ -62,27 +62,41 @@ public class Service{
         _methods.print("Exercício nº3.");
 
         while(control){
-            _methods.print("Digite o salário do cidadão:");
+
+            int i = 1;
+            _methods.print("Digite o salário do" + i + "º cidadão:");
+            i++;
+
             double salary = _methods.validateDouble(_methods._reader.next());
+
+            if(salary > topPaycheck){
+                topPaycheck = salary;
+            }
+
             if(salary < 0){
                 control = false;
-                continue;
             }
-            if(salary < 100.00){
-                poorPeople++;
+            else{
+                if(salary < 100.00){
+                    poorPeople++;
+                }
+                citizens++;
+
+                amountPaycheck = amountPaycheck + salary;
+
+                _methods.print("Digite o número de filhos do cidadão: ");
+                children = children + _methods.validateInteger(_methods._reader.next());
             }
-            citizens++;
-
-            amountPaycheck = amountPaycheck + salary;
-
-            _methods.print("Digite o número de filhos do cidadão: ");
-            children = children + _methods.validateInteger(_methods._reader.next());
         }
+        averageSalary = amountPaycheck / citizens;
+        averageChildren = children / citizens;
+        percentualPoor = poorPeople / citizens * 100;
 
-        _methods.print("A média salarial é de: " +  averageSalary + ".\n"
-            + "A média de número de filhos é de: " + averageChildren + ".\n"
+        _methods.print("A média salarial é de: " +  _methods.formatDouble(averageSalary) + ".\n"
+            + "A média de número de filhos é de: " + _methods.formatDouble(averageChildren) + ".\n"
             + "O maior salário é de: R$ " + topPaycheck + ".\n"
-            + "O percentual de pessoas com salário até R$ 100,00 é de " +  percentualPoor + "%");
+            + "O percentual de pessoas com salário até R$ 100,00 é de " +
+                _methods.formatDouble(percentualPoor) + "%");
     }
 
     public void exerciseFour(){
@@ -227,6 +241,7 @@ public class Service{
          *deverá ler, além das notas, o código do aluno e 
          *deverá ser encerrado quando o código for igual a zero.
          */
+
         
 
 
