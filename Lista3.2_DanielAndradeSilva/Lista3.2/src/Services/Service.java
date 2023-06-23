@@ -64,8 +64,7 @@ public class Service{
         while(control){
 
             int i = 1;
-            _methods.print("Digite o salário do" + i + "º cidadão:");
-            i++;
+            _methods.print("Digite o salário do cidadão: ");
 
             double salary = _methods.validateDouble(_methods._reader.next());
 
@@ -90,7 +89,7 @@ public class Service{
         }
         averageSalary = amountPaycheck / citizens;
         averageChildren = children / citizens;
-        percentualPoor = poorPeople / citizens * 100;
+        percentualPoor = ((poorPeople / citizens) * 100);
 
         _methods.print("A média salarial é de: " +  _methods.formatDouble(averageSalary) + ".\n"
             + "A média de número de filhos é de: " + _methods.formatDouble(averageChildren) + ".\n"
